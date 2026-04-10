@@ -38,7 +38,7 @@ const storage = {
       items.push(itemId);
     }
     storage.set(key, items);
-    return !items.includes(itemId);
+    return items.includes(itemId);
   }
 };
 
@@ -46,17 +46,27 @@ const storage = {
 // DARK MODE
 // ============================================
 
+const syncThemeToggle = () => {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  const dark = document.body.classList.contains("dark-mode");
+  btn.textContent = dark ? "☀️" : "🌙";
+  btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  btn.setAttribute("title", dark ? "Light mode" : "Dark mode");
+};
+
 const initDarkMode = () => {
   const isDark = storage.get("darkMode", false);
   if (isDark) {
     document.body.classList.add("dark-mode");
   }
+  syncThemeToggle();
 };
 
 const toggleDarkMode = () => {
-  const isDark = !document.body.classList.contains("dark-mode");
   document.body.classList.toggle("dark-mode");
-  storage.set("darkMode", isDark);
+  storage.set("darkMode", document.body.classList.contains("dark-mode"));
+  syncThemeToggle();
 };
 
 // ============================================
@@ -182,7 +192,7 @@ const renderNotes = (notes, container) => {
       bookmarkBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const isBookmarked = storage.toggle("bookmarkedNotes", title);
-        bookmarkBtn.classList.toggle("bookmarked");
+        bookmarkBtn.classList.toggle("bookmarked", isBookmarked);
         updateBookmarksSection();
       });
     }
@@ -351,6 +361,12 @@ if (modal) {
   });
 }
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal?.classList.contains("active")) {
+    modal.classList.remove("active");
+  }
+});
+
 // ============================================
 // MARK MENU (Quick marking from card)
 // ============================================
@@ -435,7 +451,9 @@ const updateDashboard = () => {
   const totalNotes = notes.length;
   const totalCategories = categories.size;
   const revisedCount = Object.keys(progress).length;
-  const progressPercentage = Math.round((revisedCount / totalNotes) * 100);
+  const progressPercentage = totalNotes
+    ? Math.round((revisedCount / totalNotes) * 100)
+    : 0;
 
   const lastRevisedEl = document.getElementById("last-revised");
   if (lastRevisedEl) {
