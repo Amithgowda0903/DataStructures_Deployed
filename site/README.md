@@ -15,11 +15,11 @@ Open `index.html` directly in a browser.
 git add .
 git commit -m "Add static site and GitHub Pages workflow"
 git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
+git remote add origin https://github.com/Amithgowda0903/DataStructures_Deployed.git
 git push -u origin main
 ```
 
 3. On GitHub, open Settings -> Pages and set Source to GitHub Actions.
 4. After the workflow finishes, your site URL will be:
 
-https://<your-username>.github.io/<your-repo>/
+https://github.com/Amithgowda0903/DataStructures_Deployed.git
