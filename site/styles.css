@@ -172,13 +172,35 @@ h1 {
   margin-top: 2.5rem;
 }
 
-.library-grid {
+.search-box {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.search-box input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #e6dcc9;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+}
+
+.search-box input:focus {
+  outline: 2px solid rgba(239, 71, 111, 0.2);
+  border-color: rgba(239, 71, 111, 0.35);
+}
+
+.notes-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.library-group {
+.note-card {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #efe6d3;
   border-radius: 18px;
@@ -186,57 +208,75 @@ h1 {
   box-shadow: 0 8px 22px -18px var(--ring);
 }
 
-.library-group.wide {
-  grid-column: 1 / -1;
-}
-
-.library-title {
+.note-card__header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.9rem;
+  gap: 1rem;
+  align-items: start;
 }
 
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: #e8f2ff;
+.note-category {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.note-source {
+  text-decoration: none;
+  white-space: nowrap;
   color: var(--ink);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  white-space: nowrap;
+  font-size: 0.8rem;
 }
 
-.file-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.65rem;
+.note-summary,
+.note-path {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
 }
 
-.file-list.two-col {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.note-path {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
 }
 
-.file-link {
-  display: block;
-  text-decoration: none;
-  color: var(--ink);
-  background: #fff;
-  border: 1px solid #f0e7d6;
-  border-radius: 12px;
-  padding: 0.8rem 0.9rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+.code-panel {
+  margin-top: 0.9rem;
+  border-top: 1px solid #f0e7d6;
+  padding-top: 0.9rem;
 }
 
-.file-link:hover {
-  transform: translateY(-2px);
-  border-color: rgba(239, 71, 111, 0.28);
-  box-shadow: 0 10px 18px -16px var(--ring);
+.code-panel summary {
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--accent);
+}
+
+.code-panel pre {
+  overflow: auto;
+  padding: 1rem;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 14px;
+  margin: 0.9rem 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.notes-list .note-card:nth-child(3n) {
+  border-color: rgba(6, 214, 160, 0.18);
+}
+
+.notes-list .note-card:nth-child(3n + 1) {
+  border-color: rgba(239, 71, 111, 0.18);
+}
+
+.notes-list .note-card:nth-child(3n + 2) {
+  border-color: rgba(20, 33, 61, 0.12);
 }
 
 footer {
@@ -276,13 +316,12 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .library-grid,
-  .file-list.two-col {
+  .notes-list {
     grid-template-columns: 1fr;
   }
 
   .section-head,
-  .library-title {
+  .note-card__header {
     flex-direction: column;
     align-items: flex-start;
   }

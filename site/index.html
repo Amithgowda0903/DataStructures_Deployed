@@ -35,8 +35,8 @@
         <h1>Your data structures notes, organized in one place.</h1>
         <p class="lead">
           This page turns your Python examples into a simple study library.
-          Open it anywhere, jump to a topic, and use the linked source files to
-          practice the concept again.
+          Open it anywhere, jump to a topic, and read the notes directly on the
+          page without hunting through folders.
         </p>
         <a class="btn" href="#library">Browse the Library</a>
       </section>
@@ -64,7 +64,7 @@
         <div class="project-list">
           <article class="project">
             <h3>1. Basics</h3>
-            <p>Start with array insertion and self/OOP examples.</p>
+            <p>Start with array insertion and the simplest class examples.</p>
           </article>
           <article class="project">
             <h3>2. Searching</h3>
@@ -79,75 +79,19 @@
 
       <section id="library" class="library reveal">
         <div class="section-head">
-          <h2>Source Library</h2>
+          <h2>Notebook Library</h2>
           <p>
-            Click a file name to open the code in GitHub. These links point to
-            the files inside your <span class="tag">Data Structers</span>
-            folder.
+            Each card shows the code you already keep in the repo, with a short
+            note so the page works like a portable study notebook.
           </p>
         </div>
 
-        <div class="library-grid">
-          <article class="library-group">
-            <div class="library-title">
-              <h3>Arrays and Basics</h3>
-              <span class="tag">Foundations</span>
-            </div>
-            <ul class="file-list">
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/array_insertion_loop.py">array_insertion_loop.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/publiceasyexample.py">publiceasyexample.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/self_example.py">self_example.py</a></li>
-            </ul>
-          </article>
+        <label class="search-box" for="note-search">
+          <span>Search notes</span>
+          <input id="note-search" type="search" placeholder="Search by topic, file name, or summary" />
+        </label>
 
-          <article class="library-group">
-            <div class="library-title">
-              <h3>Searching</h3>
-              <span class="tag">Lookups</span>
-            </div>
-            <ul class="file-list">
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/linearsearch.py">linearsearch.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sparce/Binarysearch.py">Binarysearch.py</a></li>
-            </ul>
-          </article>
-
-          <article class="library-group">
-            <div class="library-title">
-              <h3>Sorting</h3>
-              <span class="tag">Algorithms</span>
-            </div>
-            <ul class="file-list">
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sorting/bubblesort.py">bubblesort.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sorting/insertion%20sort.py">insertion sort.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sorting/Mergesort.py">Mergesort.py</a></li>
-            </ul>
-          </article>
-
-          <article class="library-group">
-            <div class="library-title">
-              <h3>OOP Practice</h3>
-              <span class="tag">Classes</span>
-            </div>
-            <ul class="file-list">
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/polymorphismwithclass.py">polymorphismwithclass.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/privatevariableexample2.py">privatevariableexample2.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/protectedeasyexample.py">protectedeasyexample.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/Protectedvariableexample.py">Protectedvariableexample.py</a></li>
-            </ul>
-          </article>
-
-          <article class="library-group wide">
-            <div class="library-title">
-              <h3>Matrices and Sparse Representations</h3>
-              <span class="tag">Storage</span>
-            </div>
-            <ul class="file-list two-col">
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sparce/twodarrays.py">twodarrays.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sparce/Sparsematrix.py">Sparsematrix.py</a></li>
-              <li><a class="file-link" href="https://github.com/Amithgowda0903/Data-Structures/blob/main/Data%20Structers/sparce/sparse_using_csr.py">sparse_using_csr.py</a></li>
-            </ul>
-          </article>
-        </div>
+        <div id="notes-list" class="notes-list"></div>
       </section>
 
       <section id="contact" class="contact reveal">
@@ -163,6 +107,7 @@
       <p>Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
     </footer>
 
+    <script src="notes.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
