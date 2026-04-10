@@ -17,7 +17,9 @@ const escapeHtml = (value) =>
 const storage = {
   get: (key, defaultValue = null) => {
     try {
-      return JSON.parse(localStorage.getItem(key)) || defaultValue;
+      const rawValue = localStorage.getItem(key);
+      if (rawValue === null) return defaultValue;
+      return JSON.parse(rawValue);
     } catch {
       return defaultValue;
     }
@@ -56,9 +58,11 @@ const syncThemeToggle = () => {
 };
 
 const initDarkMode = () => {
-  const isDark = storage.get("darkMode", false);
+  const isDark = storage.get("darkMode", true);
   if (isDark) {
     document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
   }
   syncThemeToggle();
 };

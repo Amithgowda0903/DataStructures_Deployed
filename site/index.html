@@ -6,7 +6,7 @@
     <title>Data Structures Hub</title>
     <meta
       name="description"
-      content="A personal static website to share projects, notes, and quick links."
+      content="A student-first dark theme portal for data structures revision, tracking, and practice."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,34 +16,52 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="dark-mode">
     <div class="noise"></div>
 
     <header class="topbar">
       <p class="brand">DATA STRUCTURES HUB</p>
       <nav aria-label="Primary">
         <a href="#overview">Overview</a>
-        <a href="#study-path">Study path</a>
+        <a href="#study-path">Study Path</a>
         <a href="#library">Library</a>
-        <a href="#bookmarks">Quick revision</a>
+        <a href="#bookmarks">Quick Revision</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Switch to light mode"
+        title="Light mode"
+      >
+        ☀️
+      </button>
     </header>
 
     <main>
       <section class="hero reveal">
-        <p class="eyebrow">GitHub Pages learning site</p>
-        <h1>Your data structures notes, organized in one place.</h1>
+        <p class="eyebrow">Student Revision Portal</p>
+        <h1>Master data structures with a focused dark study dashboard.</h1>
         <p class="lead">
-          This page turns your Python examples into a simple study library.
-          Open it anywhere, jump to a topic, and read the notes directly on the
-          page without hunting through folders.
+          Revise quickly, bookmark important notes, track progress, and jump to
+          source code without leaving this page.
         </p>
-        <a class="btn" href="#library">Browse the Library</a>
+        <div class="hero-actions">
+          <a class="btn" href="#library">Start Studying</a>
+          <a class="btn btn-secondary" href="#study-path">Follow Study Path</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">Exam-ready flow</span>
+          <span class="hero-chip">Topic-wise learning</span>
+          <span class="hero-chip">Fast quick revision</span>
+        </div>
       </section>
 
       <section id="dashboard" class="dashboard reveal">
+        <div class="section-head">
+          <h2>Progress Snapshot</h2>
+          <p>Track your revision consistency and keep momentum every day.</p>
+        </div>
         <div class="dashboard-grid">
           <div class="dashboard-card">
             <p class="dashboard-label">Total Notes</p>
@@ -66,45 +84,57 @@
 
       <section id="overview" class="grid reveal">
         <article class="card">
-          <h2>What this site is for</h2>
+          <h2>What you can do here</h2>
           <p>
-            A quick-reference homepage for arrays, searching, sorting, sparse
-            matrices, and OOP practice files from your repository.
+            Use this as your all-in-one data structures study desk for arrays,
+            searching, sorting, sparse matrices, and OOP examples.
           </p>
         </article>
         <article class="card accent">
-          <h2>At a glance</h2>
+          <h2>Student-focused features</h2>
           <ul>
-            <li>15 Python practice notes across 5 topic areas</li>
-            <li>Searching, sorting, OOP, and sparse-matrix examples</li>
-            <li>Direct links to the matching files on GitHub</li>
+            <li>Filter by category and search by keywords</li>
+            <li>Bookmark and mark interview-important notes</li>
+            <li>Track what you revised and what needs practice</li>
           </ul>
         </article>
       </section>
 
       <section id="study-path" class="projects reveal">
-        <h2>Study Path</h2>
+        <h2>Suggested Study Path</h2>
         <div class="project-list">
           <article class="project">
-            <h3>1. Basics</h3>
-            <p>Start with array insertion and the simplest class examples.</p>
+            <h3>1. Fundamentals</h3>
+            <p>Start with arrays, insertion logic, and basic class structure.</p>
           </article>
           <article class="project">
-            <h3>2. Searching</h3>
-            <p>Work through linear search and binary search patterns.</p>
+            <h3>2. Search Patterns</h3>
+            <p>Revise linear and binary search for coding rounds.</p>
           </article>
           <article class="project">
-            <h3>3. Sorting</h3>
-            <p>Compare bubble sort, insertion sort, and merge sort.</p>
+            <h3>3. Sorting Logic</h3>
+            <p>Compare bubble, insertion, and merge sort approaches.</p>
+          </article>
+          <article class="project">
+            <h3>4. OOP Concepts</h3>
+            <p>Practice access specifiers, self, and polymorphism examples.</p>
+          </article>
+          <article class="project">
+            <h3>5. Sparse Matrices</h3>
+            <p>Understand 2D arrays and CSR matrix representations.</p>
+          </article>
+          <article class="project">
+            <h3>6. Revision Sprint</h3>
+            <p>Use bookmarks and quick marks before tests or interviews.</p>
           </article>
         </div>
       </section>
 
-      <section id="bookmarks" class="library reveal" style="display: none;">
+      <section id="bookmarks" class="library reveal" style="display: none">
         <div class="section-head">
           <h2>Quick Revision (Bookmarked)</h2>
           <p>
-            Your bookmarked notes for quick revision. Bookmark notes to add them here.
+            Keep your most important notes here and revise them daily.
           </p>
         </div>
         <div id="bookmarks-list" class="notes-list"></div>
@@ -114,15 +144,19 @@
         <div class="section-head">
           <h2>Notebook Library</h2>
           <p>
-            Each card shows the code you already keep in the repo, with a short
-            note so the page works like a portable study notebook.
+            Open any topic card, scan the summary, inspect code, and mark your
+            revision status as you learn.
           </p>
         </div>
 
         <div class="library-controls">
           <label class="search-box" for="note-search">
             <span>Search notes</span>
-            <input id="note-search" type="search" placeholder="Search by topic, code, or file name" />
+            <input
+              id="note-search"
+              type="search"
+              placeholder="Search by topic, concept, keyword, or file name"
+            />
           </label>
           <div class="category-filters">
             <span class="filter-label">Filter by category:</span>
@@ -136,17 +170,21 @@
       <section id="contact" class="contact reveal">
         <h2>Contact</h2>
         <p>
-          Add your GitHub profile, LinkedIn, or email here if you want a public
-          contact area on the site.
+          Replace these links with your real profile details and make this page
+          portfolio-ready.
         </p>
+        <div class="contact-links">
+          <a href="#" aria-label="GitHub profile">GitHub</a>
+          <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
+          <a href="#" aria-label="Email contact">Email</a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
+      <p>Built for students using HTML, CSS, and JavaScript.</p>
     </footer>
 
-    <!-- Note Modal -->
     <div id="note-modal" class="modal">
       <div class="modal-content">
         <button class="modal-close" aria-label="Close modal">&times;</button>
