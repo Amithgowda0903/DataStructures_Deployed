@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amith Hub</title>
+    <meta
+      name="description"
+      content="A personal static website to share projects, notes, and quick links."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <header class="topbar">
+      <p class="brand">AMITH HUB</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero reveal">
+        <p class="eyebrow">Live on GitHub Pages</p>
+        <h1>Your personal static website, online 24/7.</h1>
+        <p class="lead">
+          This site is lightweight, fast, and easy to maintain. Update files,
+          push to GitHub, and your site redeploys automatically.
+        </p>
+        <a class="btn" href="#projects">See Sections</a>
+      </section>
+
+      <section id="about" class="grid reveal">
+        <article class="card">
+          <h2>About</h2>
+          <p>
+            Use this area to introduce yourself. You can share what you are
+            learning, your goals, and what visitors can find here.
+          </p>
+        </article>
+        <article class="card accent">
+          <h2>Highlights</h2>
+          <ul>
+            <li>Mobile and desktop responsive</li>
+            <li>Simple single page architecture</li>
+            <li>Automatic deployment workflow</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="projects" class="projects reveal">
+        <h2>Projects</h2>
+        <div class="project-list">
+          <article class="project">
+            <h3>Data Structures Notes</h3>
+            <p>Document your practice and examples in one place.</p>
+          </article>
+          <article class="project">
+            <h3>Coding Challenges</h3>
+            <p>Showcase solved problems with links to source code.</p>
+          </article>
+          <article class="project">
+            <h3>Learning Log</h3>
+            <p>Track your progress over time with dated updates.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact reveal">
+        <h2>Contact</h2>
+        <p>
+          Add your GitHub, LinkedIn, email, or any other links you want visitors
+          to use.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
