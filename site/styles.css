@@ -69,6 +69,20 @@ main {
   padding: 2.5rem 1.25rem 3rem;
 }
 
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.section-head p {
+  max-width: 56ch;
+  color: var(--muted);
+  margin: 0;
+}
+
 .hero {
   padding: 2.75rem;
   border-radius: 24px;
@@ -154,6 +168,77 @@ h1 {
   transform: translateY(-4px);
 }
 
+.library {
+  margin-top: 2.5rem;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.library-group {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #efe6d3;
+  border-radius: 18px;
+  padding: 1.15rem;
+  box-shadow: 0 8px 22px -18px var(--ring);
+}
+
+.library-group.wide {
+  grid-column: 1 / -1;
+}
+
+.library-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #e8f2ff;
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.file-list.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.file-link {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #f0e7d6;
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 71, 111, 0.28);
+  box-shadow: 0 10px 18px -16px var(--ring);
+}
+
 footer {
   padding: 1.5rem;
   text-align: center;
@@ -189,6 +274,17 @@ footer {
   .grid,
   .project-list {
     grid-template-columns: 1fr;
+  }
+
+  .library-grid,
+  .file-list.two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head,
+  .library-title {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero {
