@@ -24,9 +24,10 @@
       <nav>
         <a href="#overview">Overview</a>
         <a href="#library">Library</a>
-        <a href="#study-path">Study Path</a>
+        <a href="#bookmarks">Quick Revision</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     </header>
 
     <main>
@@ -39,6 +40,27 @@
           page without hunting through folders.
         </p>
         <a class="btn" href="#library">Browse the Library</a>
+      </section>
+
+      <section id="dashboard" class="dashboard reveal">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <p class="dashboard-label">Total Notes</p>
+            <p class="dashboard-value" id="total-notes">0</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">Categories</p>
+            <p class="dashboard-value" id="total-categories">0</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">Progress</p>
+            <p class="dashboard-value" id="progress-percentage">0%</p>
+          </div>
+          <div class="dashboard-card">
+            <p class="dashboard-label">Last Revised</p>
+            <p class="dashboard-value" id="last-revised">Never</p>
+          </div>
+        </div>
       </section>
 
       <section id="overview" class="grid reveal">
@@ -77,6 +99,16 @@
         </div>
       </section>
 
+      <section id="bookmarks" class="library reveal" style="display: none;">
+        <div class="section-head">
+          <h2>Quick Revision (Bookmarked)</h2>
+          <p>
+            Your bookmarked notes for quick revision. Bookmark notes to add them here.
+          </p>
+        </div>
+        <div id="bookmarks-list" class="notes-list"></div>
+      </section>
+
       <section id="library" class="library reveal">
         <div class="section-head">
           <h2>Notebook Library</h2>
@@ -86,10 +118,16 @@
           </p>
         </div>
 
-        <label class="search-box" for="note-search">
-          <span>Search notes</span>
-          <input id="note-search" type="search" placeholder="Search by topic, file name, or summary" />
-        </label>
+        <div class="library-controls">
+          <label class="search-box" for="note-search">
+            <span>Search notes</span>
+            <input id="note-search" type="search" placeholder="Search by topic, code, or file name" />
+          </label>
+          <div class="category-filters">
+            <span class="filter-label">Filter by category:</span>
+            <div class="filter-buttons" id="filter-buttons"></div>
+          </div>
+        </div>
 
         <div id="notes-list" class="notes-list"></div>
       </section>
@@ -106,6 +144,14 @@
     <footer>
       <p>Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
     </footer>
+
+    <!-- Note Modal -->
+    <div id="note-modal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
 
     <script src="notes.js"></script>
     <script src="script.js"></script>

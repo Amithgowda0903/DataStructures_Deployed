@@ -8,6 +8,16 @@
   --ring: rgba(20, 33, 61, 0.14);
 }
 
+body.dark-mode {
+  --bg: #0f172a;
+  --ink: #f1f5f9;
+  --accent: #f472b6;
+  --accent-2: #2dd4bf;
+  --card: #1e293b;
+  --muted: #94a3b8;
+  --ring: rgba(241, 245, 249, 0.12);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -22,6 +32,14 @@ body {
     linear-gradient(180deg, #fffdf8 0%, var(--bg) 75%);
   min-height: 100vh;
   line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background:
+    radial-gradient(circle at 0% 0%, #1e293b66 0, transparent 35%),
+    radial-gradient(circle at 90% 20%, #334155 0, transparent 35%),
+    linear-gradient(180deg, #1a1f2e 0%, var(--bg) 75%);
 }
 
 .noise {
@@ -43,6 +61,24 @@ body {
   backdrop-filter: blur(8px);
   background: #fffaf2bf;
   border-bottom: 1px solid #f2ead6;
+}
+
+body.dark-mode .topbar {
+  background: #0f172a99;
+  border-bottom-color: #1e293b;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
 }
 
 .brand {
@@ -67,6 +103,49 @@ main {
   width: min(100%, 1100px);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 3rem;
+}
+
+.dashboard {
+  margin-top: 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(239, 71, 111, 0.08) 0%, rgba(6, 214, 160, 0.08) 100%);
+  border-radius: 24px;
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.dashboard-card {
+  background: var(--card);
+  border: 1px solid #efe6d3;
+  border-radius: 16px;
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px -8px var(--ring);
+}
+
+body.dark-mode .dashboard-card {
+  border-color: #334155;
+}
+
+.dashboard-label {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-weight: 500;
+}
+
+.dashboard-value {
+  margin: 0.5rem 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 .section-head {
@@ -139,6 +218,11 @@ h1 {
   border-radius: 18px;
   padding: 1.25rem;
   box-shadow: 0 8px 22px -18px var(--ring);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .card {
+  border-color: #334155;
 }
 
 .accent {
@@ -164,6 +248,11 @@ h1 {
   transition: transform 0.25s ease;
 }
 
+body.dark-mode .project {
+  background: #1e293b;
+  border-color: #334155;
+}
+
 .project:hover {
   transform: translateY(-4px);
 }
@@ -172,9 +261,16 @@ h1 {
   margin-top: 2.5rem;
 }
 
+.library-controls {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .search-box {
   display: grid;
   gap: 0.45rem;
+  width: 100%;
   margin-bottom: 1rem;
   color: var(--muted);
 }
@@ -189,9 +285,62 @@ h1 {
   color: var(--ink);
 }
 
+body.dark-mode .search-box input {
+  background: #1e293b;
+  border-color: #334155;
+  color: var(--ink);
+}
+
 .search-box input:focus {
   outline: 2px solid rgba(239, 71, 111, 0.2);
   border-color: rgba(239, 71, 111, 0.35);
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: 1.5px solid #e6dcc9;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+body.dark-mode .filter-btn {
+  border-color: #334155;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
 .notes-list {
@@ -206,6 +355,92 @@ h1 {
   border-radius: 18px;
   padding: 1.15rem;
   box-shadow: 0 8px 22px -18px var(--ring);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+body.dark-mode .note-card {
+  background: rgba(30, 41, 59, 0.88);
+  border-color: #334155;
+}
+
+.note-card:hover {
+  box-shadow: 0 12px 28px -16px var(--ring);
+}
+
+.note-card-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.note-card-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.card-action-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: var(--muted);
+}
+
+.card-action-btn:hover {
+  background: rgba(239, 71, 111, 0.1);
+  transform: scale(1.15);
+  color: var(--accent);
+}
+
+body.dark-mode .card-action-btn:hover {
+  background: rgba(244, 114, 182, 0.1);
+}
+
+.card-action-btn.bookmarked {
+  color: #fbbf24;
+}
+
+.note-status-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
+}
+
+.badge.important {
+  background: rgba(239, 71, 111, 0.15);
+  color: var(--accent);
+}
+
+.badge.interview {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+.badge.revision {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.badge.revised {
+  background: rgba(6, 214, 160, 0.15);
+  color: var(--accent-2);
 }
 
 .note-card__header {
@@ -249,10 +484,15 @@ h1 {
   padding-top: 0.9rem;
 }
 
+body.dark-mode .code-panel {
+  border-top-color: #334155;
+}
+
 .code-panel summary {
   cursor: pointer;
   font-family: "IBM Plex Mono", monospace;
   color: var(--accent);
+  user-select: none;
 }
 
 .code-panel pre {
@@ -265,6 +505,197 @@ h1 {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.84rem;
   line-height: 1.55;
+  position: relative;
+}
+
+.copy-code-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-code-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.copy-feedback {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--accent-2);
+  color: #000;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  animation: slideInUp 0.3s ease, slideOutDown 0.3s ease 2.7s forwards;
+  z-index: 100;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px -20px var(--ring);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+body.dark-mode .modal-content {
+  border: 1px solid #334155;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--ink);
+  transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+}
+
+.modal-note {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-header {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0e7d6;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #334155;
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.modal-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-section h3 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.modal-section p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.progress-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-checkbox input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.progress-checkbox label {
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .notes-list .note-card:nth-child(3n) {
@@ -283,6 +714,11 @@ footer {
   padding: 1.5rem;
   text-align: center;
   color: var(--muted);
+  border-top: 1px solid #f0e7d6;
+}
+
+body.dark-mode footer {
+  border-top-color: #334155;
 }
 
 .reveal {
@@ -328,5 +764,101 @@ footer {
 
   .hero {
     padding: 1.75rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .filter-btn {
+    flex: 1;
+    min-width: calc(50% - 0.25rem);
+  }
+
+  .copy-feedback {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .topbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .brand {
+    font-size: 0.9rem;
+  }
+
+  nav {
+    gap: 0.75rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .dashboard {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .note-card {
+    padding: 0.9rem;
+  }
+
+  .code-panel pre {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    margin: 0.75rem 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-btn {
+    min-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+
+  .note-card-toolbar {
+    gap: 0.35rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
   }
 }
